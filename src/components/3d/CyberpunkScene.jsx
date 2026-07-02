@@ -1,59 +1,28 @@
-import React, { useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { EffectComposer, Bloom, Noise, Vignette, ChromaticAberration } from '@react-three/postprocessing';
-import * as THREE from 'three';
-import NeonGrid from './NeonGrid';
-import FloatingParticles from './FloatingParticles';
+import React, { lazy, Suspense } from 'react';
 import { SceneErrorBoundary } from './SceneErrorBoundary';
+import useDevicePerformance from '../../hooks/useDevicePerformance';
+import CSSFallbackBackground from './CSSFallbackBackground';
 
-function CameraRig() {
-  useFrame((state) => {
-    state.camera.position.x = THREE.MathUtils.lerp(state.camera.position.x, state.pointer.x * 1.5, 0.05);
-    state.camera.position.y = THREE.MathUtils.lerp(state.camera.position.y, state.pointer.y * 1.0, 0.05);
-    state.camera.lookAt(0, 0, 0);
-  });
-  return null;
-}
-
-function PostEffects() {
-  const chromaticOffset = useMemo(() => new THREE.Vector2(0.0015, 0.0015), []);
-
-  return (
-    <EffectComposer>
-      <Bloom
-        luminanceThreshold={0.1}
-        luminanceSmoothing={0.9}
-        intensity={1.2}
-        mipmapBlur
-      />
-      <ChromaticAberration offset={chromaticOffset} />
-      <Noise opacity={0.03} />
-      <Vignette eskil={false} offset={0.1} darkness={1.2} />
-    </EffectComposer>
-  );
-}
+// Lazy load para los componentes 3D que jalan Three.js y React Three Fiber
+const CyberpunkCanvas = lazy(() => import('./CyberpunkCanvas'));
 
 export default function CyberpunkScene() {
+  const { isMobile, isLowEnd } = useDevicePerformance();
+
   return (
     <SceneErrorBoundary>
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
-        <Canvas
-          camera={{ position: [0, 0, 5], fov: 60 }}
-          gl={{ antialias: true, powerPreference: "high-performance", failIfMajorPerformanceCaveat: false }}
-          onError={() => {}}
-        >
-          <color attach="background" args={["#020202"]} />
-          <ambientLight intensity={0.2} />
-          <directionalLight position={[10, 10, 5]} intensity={1.5} color="#00f0ff" />
-          <pointLight position={[-10, -10, -5]} intensity={1} color="#00ff41" />
-
-          <NeonGrid />
-          <FloatingParticles count={200} />
-          <CameraRig />
-
-          <PostEffects />
-        </Canvas>
+        {isMobile ? (
+          // En móviles cargamos directamente el fondo CSS para máximo rendimiento
+          <CSSFallbackBackground />
+        ) : (
+          // En desktop cargamos el Canvas 3D de forma perezosa, usando el fondo CSS como fallback de carga (Suspense)
+          <Suspense fallback={<CSSFallbackBackground />}>
+            <CyberpunkCanvas isLowEnd={isLowEnd} />
+          </Suspense>
+        )}
       </div>
     </SceneErrorBoundary>
   );
 }
+

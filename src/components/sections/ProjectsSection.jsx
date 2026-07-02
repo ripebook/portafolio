@@ -30,6 +30,10 @@ export default function ProjectsSection() {
                 src={project.image}
                 alt={project.title}
                 className="project-card__image"
+                loading="lazy"
+                decoding="async"
+                width="500"
+                height="281"
               />
               <div className="project-card__type-badge">
                 {project.type}

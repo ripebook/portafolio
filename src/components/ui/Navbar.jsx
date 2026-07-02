@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (id) => {
+    setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Un pequeño delay para que la transición de cerrado del menú ocurra
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     }
   };
 
@@ -15,18 +21,31 @@ export default function Navbar() {
           <span className="pulse-icon">::</span>
           <span className="glow-text-green">FG_PORTFOLIO</span>
         </div>
-        <div className="navbar-links">
+        
+        {/* Botón Hamburguesa Cyberpunk */}
+        <button 
+          className={`navbar-toggle ${isOpen ? 'navbar-toggle--open' : ''}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Abrir menú de navegación"
+          aria-expanded={isOpen}
+        >
+          <span className="toggle-line" />
+          <span className="toggle-line" />
+          <span className="toggle-line" />
+        </button>
+
+        <div className={`navbar-links ${isOpen ? 'navbar-links--open' : ''}`}>
           <button onClick={() => scrollToSection('home')}>
-            INICIO
+            [ INICIO ]
           </button>
           <button onClick={() => scrollToSection('projects')}>
-            PROYECTOS
+            [ PROYECTOS ]
           </button>
           <button onClick={() => scrollToSection('skills')}>
-            HABILIDADES
+            [ HABILIDADES ]
           </button>
           <button onClick={() => scrollToSection('contact')}>
-            CONTACTO
+            [ CONTACTO ]
           </button>
         </div>
       </div>

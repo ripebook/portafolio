@@ -1,10 +1,15 @@
 import React from 'react';
+import useDevicePerformance from '../../hooks/useDevicePerformance';
 
 export default function ScanlineOverlay() {
+  const { isMobile, isLowEnd, reduceMotion } = useDevicePerformance();
+
+  const showFlicker = !isMobile && !isLowEnd && !reduceMotion;
+
   return (
     <>
       <div className="crt-scanlines" />
-      <div className="crt-flicker" />
+      {showFlicker && <div className="crt-flicker" />}
     </>
   );
 }

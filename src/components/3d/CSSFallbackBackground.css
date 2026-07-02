@@ -1,0 +1,97 @@
+.css-fallback-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #030303;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cyber-grid {
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 65, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 65, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center bottom;
+  transform: perspective(300px) rotateX(65deg);
+  transform-origin: center bottom;
+  will-change: transform, background-position;
+  animation: grid-scroll 20s linear infinite;
+}
+
+@keyframes grid-scroll {
+  0% {
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-y: 1000px;
+  }
+}
+
+.cyber-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #050505 0%,
+    rgba(5, 5, 5, 0.8) 50%,
+    rgba(5, 5, 5, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.cyber-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  will-change: transform;
+  z-index: 0;
+}
+
+.cyber-glow-orb--green {
+  top: -10%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background-color: var(--color-neon-green, #00ff41);
+  animation: float-orb-1 30s ease-in-out infinite alternate;
+}
+
+.cyber-glow-orb--cyan {
+  bottom: 10%;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-neon-cyan, #00f0ff);
+  animation: float-orb-2 35s ease-in-out infinite alternate;
+}
+
+@keyframes float-orb-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(100px, 50px) scale(1.2);
+  }
+}
+
+@keyframes float-orb-2 {
+  0% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  100% {
+    transform: translate(-120px, -60px) scale(0.9);
+  }
+}
