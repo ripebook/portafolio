@@ -15,7 +15,7 @@ function CameraRig() {
 }
 
 function PostEffects() {
-  // Eliminamos ChromaticAberration por ser extremadamente pesada y apenas visible
+  // Remove ChromaticAberration due to high performance cost and low visibility
   return (
     <EffectComposer>
       <Bloom
@@ -31,7 +31,7 @@ function PostEffects() {
 }
 
 export default function CyberpunkCanvas({ isLowEnd }) {
-  // Ajustar número de partículas y deshabilitar postprocessing en desktop de menor potencia
+  // Adjust particle count and disable postprocessing on lower performance desktops
   const particleCount = isLowEnd ? 60 : 150;
 
   return (

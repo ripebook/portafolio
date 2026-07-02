@@ -7,7 +7,7 @@ export default function Navbar() {
     setIsOpen(false);
     const element = document.getElementById(id);
     if (element) {
-      // Un pequeño delay para que la transición de cerrado del menú ocurra
+      // A small delay to allow the menu closing transition to occur
       setTimeout(() => {
         element.scrollIntoView({ behavior: 'smooth' });
       }, 100);
@@ -26,7 +26,7 @@ export default function Navbar() {
         <button 
           className={`navbar-toggle ${isOpen ? 'navbar-toggle--open' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Abrir menú de navegación"
+          aria-label="Open navigation menu"
           aria-expanded={isOpen}
         >
           <span className="toggle-line" />
@@ -36,16 +36,16 @@ export default function Navbar() {
 
         <div className={`navbar-links ${isOpen ? 'navbar-links--open' : ''}`}>
           <button onClick={() => scrollToSection('home')}>
-            [ INICIO ]
+            [ HOME ]
           </button>
           <button onClick={() => scrollToSection('projects')}>
-            [ PROYECTOS ]
+            [ PROJECTS ]
           </button>
           <button onClick={() => scrollToSection('skills')}>
-            [ HABILIDADES ]
+            [ SKILLS ]
           </button>
           <button onClick={() => scrollToSection('contact')}>
-            [ CONTACTO ]
+            [ CONTACT ]
           </button>
         </div>
       </div>

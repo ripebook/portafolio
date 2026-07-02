@@ -5,7 +5,7 @@ export default function SkillsSection() {
   const skillCategories = [
     {
       title: ":: FRONTEND_STACK",
-      skills: ["React", "Astro", "Three.js", "Tailwind CSS v4", "HTML5 Semantico", "JavaScript ES6+"]
+      skills: ["React", "Astro", "Three.js", "Tailwind CSS v4", "Semantic HTML5", "JavaScript ES6+"]
     },
     {
       title: ":: MOBILE_STACK",
@@ -21,10 +21,10 @@ export default function SkillsSection() {
     <section id="skills" className="section">
       <div className="section-header">
         <div className="section-label text-neon-cyan">
-          :: CAPACIDADES_SISTEMA
+          :: SYSTEM_CAPABILITIES
         </div>
         <h2 className="section-title glow-text-cyan">
-          :: HABILIDADES_TECNICAS
+          :: TECHNICAL_SKILLS
         </h2>
       </div>
 

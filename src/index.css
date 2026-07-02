@@ -245,7 +245,7 @@ button {
   50% { opacity: 0.4; }
 }
 
-/* Botón Hamburguesa Cyberpunk */
+/* Cyberpunk Hamburger Button */
 .navbar-toggle {
   display: none;
   flex-direction: column;
@@ -267,7 +267,7 @@ button {
   box-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-/* Animaciones del Botón Hamburguesa */
+/* Hamburger Button Animations */
 .navbar-toggle--open .toggle-line:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
   background-color: var(--color-neon-cyan);
@@ -307,7 +307,7 @@ button {
   text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
 }
 
-/* Estilos Responsivos para Móviles */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .navbar-toggle {
     display: flex;
@@ -758,7 +758,7 @@ button {
   border: 1px solid var(--color-border);
   padding: 2rem;
   border-radius: 0.75rem;
-  max-width: 36rem;
+  max-width: 45rem;
   margin: 0 auto;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -795,6 +795,7 @@ button {
 @media (min-width: 640px) {
   .contact-card__buttons {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 
@@ -842,6 +843,17 @@ button {
   box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
 }
 
+.contact-btn--amber {
+  border: 1px solid var(--color-neon-amber);
+  color: var(--color-neon-amber);
+  box-shadow: 0 0 15px rgba(255, 149, 0, 0.1);
+}
+
+.contact-btn--amber:hover {
+  background: rgba(255, 149, 0, 0.15);
+  box-shadow: 0 0 25px rgba(255, 149, 0, 0.25);
+}
+
 .contact-btn svg {
   width: 1.125rem;
   height: 1.125rem;
@@ -872,13 +884,13 @@ button {
 
 /* ========== PERFORMANCE & RESPONSIVE OPTIMIZATIONS ========== */
 @media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  /* Desactivar pseudo-elementos de glitch que provocan re-calculos costosos de clips */
+  /* Disable glitch pseudo-elements that cause expensive clip recalculations */
   .glitch-animation::before,
   .glitch-animation::after {
     display: none !important;
   }
   
-  /* Desactivar el flicker CRT por completo en CSS si existiera */
+  /* Fully disable CRT flicker in CSS if it exists */
   .crt-flicker {
     display: none !important;
   }

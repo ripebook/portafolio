@@ -8,10 +8,10 @@ export default function ProjectsSection() {
     <section id="projects" className="section">
       <div className="section-header">
         <div className="section-label text-neon-green">
-          :: ARCHIVOS_PROYECTO
+          :: PROJECT_FILES
         </div>
         <h2 className="section-title glow-text-green">
-          :: PROYECTOS_DE_DESARROLLO
+          :: DEVELOPMENT_PROJECTS
         </h2>
       </div>
 
@@ -67,7 +67,7 @@ export default function ProjectsSection() {
                     className="project-card__link"
                   >
                     <GithubIcon />
-                    <span>CODIGO</span>
+                    <span>CODE</span>
                   </a>
                   {project.live && (
                     <a
@@ -77,7 +77,7 @@ export default function ProjectsSection() {
                       className="project-card__link"
                     >
                       <ExternalLinkIcon />
-                      <span>DEMO_VIVO</span>
+                      <span>LIVE_DEMO</span>
                     </a>
                   )}
                 </div>

@@ -8,20 +8,20 @@ export default function useDevicePerformance() {
   });
 
   useEffect(() => {
-    // 1. Detectar móvil/pantalla pequeña mediante matchMedia
+    // 1. Detect mobile/small screen via matchMedia
     const mobileQuery = window.matchMedia('(max-width: 768px)');
     
-    // 2. Detectar preferencia de movimiento reducido
+    // 2. Detect prefers-reduced-motion setting
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // 3. Detectar hardware de bajo rendimiento (si las APIs están disponibles)
+    // 3. Detect low-end hardware (if APIs are available)
     const checkLowEnd = () => {
-      // Si tiene pocos núcleos o poca memoria (APIs no estándar en algunos browsers, por eso los fallbacks)
+      // If it has few cores or low memory (non-standard APIs in some browsers, hence the fallbacks)
       const cores = navigator.hardwareConcurrency || 4;
-      // deviceMemory está en GB. Ej: 2 o 4 GB suele ser low-end en dispositivos modernos
+      // deviceMemory is in GB. E.g.: 2 or 4 GB is usually low-end in modern devices
       const memory = navigator.deviceMemory || 8; 
       
-      // Conexión lenta también puede considerarse como low-end para recursos pesados
+      // Slow connection can also be considered as low-end for heavy resources
       const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
       const isSlowConnection = connection ? (connection.saveData || ['slow-2g', '2g', '3g'].includes(connection.effectiveType)) : false;
 
@@ -36,10 +36,10 @@ export default function useDevicePerformance() {
       });
     };
 
-    // Inicializar valores
+    // Initialize values
     updatePerformance();
 
-    // Listeners para cambios dinámicos
+    // Listeners for dynamic changes
     const handleMobileChange = () => {
       setPerformance((prev) => ({ ...prev, isMobile: mobileQuery.matches }));
     };
@@ -48,7 +48,7 @@ export default function useDevicePerformance() {
       setPerformance((prev) => ({ ...prev, reduceMotion: motionQuery.matches }));
     };
 
-    // Soporte para navegadores más antiguos (safari anterior)
+    // Support for older browsers (e.g. older Safari)
     if (mobileQuery.addEventListener) {
       mobileQuery.addEventListener('change', handleMobileChange);
       motionQuery.addEventListener('change', handleMotionChange);

@@ -1,16 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GithubIcon, InstagramIcon } from '../ui/Icons';
+import { GithubIcon, InstagramIcon, MailIcon } from '../ui/Icons';
 
 export default function ContactSection() {
   return (
     <section id="contact" className="contact-section">
       <div className="section-header" style={{ textAlign: 'center' }}>
         <div className="section-label text-neon-amber">
-          :: ESTABLECER_CONEXION
+          :: ESTABLISH_CONNECTION
         </div>
         <h2 className="section-title glow-text-cyan">
-          :: CONTACTO_Y_REDES
+          :: CONTACT_&_SOCIALS
         </h2>
       </div>
 
@@ -22,7 +22,7 @@ export default function ContactSection() {
         className="contact-card"
       >
         <p className="contact-card__text">
-          CANAL DE COMUNICACION SEGURO DISPONIBLE. SELECCIONAR MEDIO DE ACCESO:
+          SECURE COMMUNICATION CHANNEL AVAILABLE. SELECT ACCESS METHOD:
         </p>
 
         <div className="contact-card__buttons">
@@ -33,7 +33,7 @@ export default function ContactSection() {
             className="contact-btn contact-btn--green"
           >
             <GithubIcon />
-            <span>ACCEDER_GITHUB</span>
+            <span>ACCESS_GITHUB</span>
           </a>
 
           <a
@@ -43,14 +43,22 @@ export default function ContactSection() {
             className="contact-btn contact-btn--cyan"
           >
             <InstagramIcon />
-            <span>ACCEDER_INSTAGRAM</span>
+            <span>ACCESS_INSTAGRAM</span>
+          </a>
+
+          <a
+            href="mailto:frangarkl@gmail.com"
+            className="contact-btn contact-btn--amber"
+          >
+            <MailIcon />
+            <span>SEND_EMAIL</span>
           </a>
         </div>
       </motion.div>
 
       <div className="footer-text">
         <p>
-          Francisco Garcia &copy; {new Date().getFullYear()} // TODOS LOS ACCESOS ENCRIPTADOS
+          Francisco Garcia &copy; {new Date().getFullYear()} // ALL ACCESS ENCRYPTED
         </p>
       </div>
     </section>

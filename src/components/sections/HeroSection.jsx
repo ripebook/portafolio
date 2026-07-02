@@ -12,7 +12,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="hero-subtitle">
-            :: SISTEMA_ONLINE_
+            :: SYSTEM_ONLINE_
           </div>
           <h1
             data-text="FRANCISCO GARCIA"

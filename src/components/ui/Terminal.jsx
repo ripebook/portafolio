@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 export default function Terminal() {
   const [lines, setLines] = useState([]);
   const fullLines = [
-    { text: ":: INICIALIZANDO INTERFAZ TERMINAL... OK", color: "text-neon-green" },
-    { text: ":: BUSCANDO DATOS DEL SISTEMA... COMPLETADO", color: "text-neon-green" },
-    { text: ":: CONEXION ESTABLECIDA CON SEC_USER_501", color: "text-neon-cyan" },
+    { text: ":: INITIALIZING TERMINAL INTERFACE... OK", color: "text-neon-green" },
+    { text: ":: RETRIEVING SYSTEM DATA... COMPLETED", color: "text-neon-green" },
+    { text: ":: CONNECTION ESTABLISHED WITH SEC_USER_501", color: "text-neon-cyan" },
     { text: "> WHOAMI", color: "text-dim" },
     { text: "Francisco Garcia", color: "text-white font-bold" },
-    { text: "Desarrollador Full Stack & Multiplataforma", color: "text-white" },
+    { text: "Full Stack & Multiplatform Developer", color: "text-white" },
     { text: "> SKILLS --SUMMARY", color: "text-dim" },
     { text: "[React, Vite, Astro, Kotlin, Compose, Three.js, Tailwind v4]", color: "text-neon-amber" },
     { text: "> INSTAGRAM", color: "text-dim" },
@@ -39,7 +39,7 @@ export default function Terminal() {
           <div className="terminal-dot terminal-dot--green" />
         </div>
         <span className="terminal-title">
-          CONSOLA :: CORE_SYS
+          CONSOLE :: CORE_SYS
         </span>
       </div>
       <div className="terminal-body">
