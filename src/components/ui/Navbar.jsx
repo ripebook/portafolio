@@ -44,6 +44,9 @@ export default function Navbar() {
           <button onClick={() => scrollToSection('skills')}>
             [ SKILLS ]
           </button>
+          <button onClick={() => scrollToSection('resume')}>
+            [ RESUME ]
+          </button>
           <button onClick={() => scrollToSection('contact')}>
             [ CONTACT ]
           </button>
